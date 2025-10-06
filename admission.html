@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UAP Admission — Calculator</title>
+  <link rel="stylesheet" href="css/admission.css" />
+</head>
+<body>
+  <div id="nav-loader-adm" class="nav-loader" aria-hidden="true">
+    <div class="nav-loader-bar"></div>
+  </div>
+
+  <header class="adm-header">
+    <div class="logo">
+      <img src="https://uap-bd.edu/img/logo.png" alt="UAP Logo" />
+      <div>
+        <h1>Admission Info</h1>
+        <small>Tuition & Credit Calculator</small>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <button id="backHome" class="btn ghost">← Back to Home</button>
+    </div>
+  </header>
+
+  <main class="adm-main">
+    <section class="adm-intro">
+      <h2>Calculate your total tuition</h2>
+      <p>Select department (pre-fills total credits & per-credit fee). Adjust values and click calculate.</p>
+    </section>
+
+    <section class="calc-wrap">
+      <div class="calc-card">
+        <label>Department</label>
+        <select id="deptSelect">
+          <option value="" data-credits="" data-fee="">-- Select Department --</option>
+          <option value="CSE" data-credits="160" data-fee="6000">CSE</option>
+          <option value="EEE" data-credits="150" data-fee="5800">EEE</option>
+          <option value="Architecture" data-credits="200" data-fee="5500">Architecture</option>
+          <option value="Civil" data-credits="170" data-fee="5200">Civil</option>
+          <option value="BBA" data-credits="140" data-fee="4200">BBA</option>
+        </select>
+
+        <label>Total Credits</label>
+        <input id="totalCredits" type="number" min="0" placeholder="Total credit" />
+
+        <label>Per-Credit Fee (BDT)</label>
+        <input id="perCreditFee" type="number" min="0" placeholder="Per-credit fee" />
+
+        <label>Scholarship (% — optional)</label>
+        <input id="scholar" type="number" min="0" max="100" placeholder="e.g., 10" />
+
+        <div class="calc-actions">
+          <button id="calcBtn" class="btn primary">Calculate</button>
+          <button id="resetCalc" class="btn ghost">Reset</button>
+        </div>
+
+        <div class="calc-result" id="calcResult" aria-live="polite">
+          <h3>Result</h3>
+          <p id="totalTuition">Total tuition: —</p>
+          <p id="afterScholar">After scholarship: —</p>
+          <p id="perSemester">Per-semester (6 sem default): —</p>
+        </div>
+      </div>
+
+      <div class="adm-info">
+        <h3>Admission Notes</h3>
+        <ul>
+          <li>Official fees depend on department & university policy.</li>
+          <li>Contact finance office for exact payment schedule.</li>
+          <li>Use calculator as an estimate only.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/admission.js"></script>
+</body>
+</html>

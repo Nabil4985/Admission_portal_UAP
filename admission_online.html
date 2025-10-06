@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>UAP — Admission Online</title>
+  <link rel="stylesheet" href="css/online.css" />
+</head>
+<body>
+  <header class="online-header">
+    <div class="left">
+      <img src="https://uap-bd.edu/img/logo.png" alt="UAP Logo" />
+      <div>
+        <h1>Admission Online</h1>
+        <small>Apply • Upload • Pay • Track</small>
+      </div>
+    </div>
+    <div class="right">
+      <a href="index.html" class="btn ghost">← Home</a>
+      <button id="openDashboard" class="btn primary">My Dashboard</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Fees & Program selector -->
+    <section class="card">
+      <h2>Program & Application Fee</h2>
+      <div class="row">
+        <label style="min-width:200px">Program type
+          <select id="programType">
+            <option value="bachelors">Bachelors</option>
+            <option value="masters">Masters</option>
+            <option value="postgraduate">Postgraduate</option>
+          </select>
+        </label>
+
+        <div class="fee-box">
+          <div>Application fee</div>
+          <div id="appFee">— BDT</div>
+          <small id="feeNote">Fees may change — use for testing only</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- Application form -->
+    <section class="card">
+      <h2>Application Form</h2>
+      <form id="appForm" autocomplete="off">
+        <div class="grid">
+          <label>Full name<input required name="fullName" id="fullName" /></label>
+          <label>Email<input required type="email" name="email" id="email" /></label>
+          <label>Phone<input required name="phone" id="phone" /></label>
+          <label>Father / Guardian<input name="guardian" id="guardian" /></label>
+          <label>Present Address<textarea id="address"></textarea></label>
+          <label>Previous Education (Degree & GPA)<input name="education" placeholder="e.g., HSC - GPA 4.80" id="education" /></label>
+          <label>Entry Exam Roll (if any)<input name="examRoll" id="examRoll" /></label>
+          <label>Select Department
+            <select id="applyDept" required>
+              <option value="">-- Select --</option>
+              <option value="CSE">CSE</option>
+              <option value="EEE">EEE</option>
+              <option value="Civil">Civil</option>
+              <option value="Architecture">Architecture</option>
+              <option value="BBA">BBA</option>
+            </select>
+          </label>
+        </div>
+
+        <hr />
+
+        <h3>Upload Documents</h3>
+        <div class="uploads">
+          <div class="upload-card" data-kind="photo">
+            <label>Photo (JPG/PNG) <small>max 5MB</small></label>
+            <div class="drop" data-target="photo">Drop photo here or click to select
+              <input type="file" accept="image/*" class="file-input" data-target="photo"/>
+            </div>
+            <div class="preview-row" data-target="photo-preview"></div>
+            <div class="progress" data-target="photo-progress"><div></div></div>
+          </div>
+
+          <div class="upload-card" data-kind="sign">
+            <label>Signature (JPG/PNG) <small>max 3MB</small></label>
+            <div class="drop" data-target="sign">Drop signature here or click to select
+              <input type="file" accept="image/*" class="file-input" data-target="sign"/>
+            </div>
+            <div class="preview-row" data-target="sign-preview"></div>
+            <div class="progress" data-target="sign-progress"><div></div></div>
+          </div>
+
+          <div class="upload-card" data-kind="transcript">
+            <label>Transcript (PDF) <small>max 10MB</small></label>
+            <div class="drop" data-target="transcript">Drop transcript here or click to select
+              <input type="file" accept=".pdf" class="file-input" data-target="transcript"/>
+            </div>
+            <div class="preview-row" data-target="transcript-preview"></div>
+            <div class="progress" data-target="transcript-progress"><div></div></div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn primary" id="submitApp">Submit Application</button>
+          <button type="reset" class="btn ghost" id="resetForm">Reset form</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Departments, seats & search -->
+    <section class="card">
+      <h2>Departments, Seats & Search</h2>
+      <div class="row">
+        <input id="deptFilter" placeholder="Search departments..." />
+        <div id="deptList" class="dept-list" style="flex:1"></div>
+      </div>
+    </section>
+
+    <!-- Merit generator -->
+    <section class="card">
+      <h2>Merit List Generator</h2>
+      <div class="row">
+        <label>Weight: GPA<input id="weightGPA" type="number" value="60" min="0" max="100" />%</label>
+        <label>Weight: Exam<input id="weightExam" type="number" value="40" min="0" max="100" />%</label>
+        <button id="genMerit" class="btn primary">Generate Merit</button>
+        <button id="exportMerit" class="btn">Export CSV</button>
+      </div>
+
+      <div id="meritTableWrap" class="table-wrap">
+        <table id="meritTable">
+          <thead>
+            <tr><th>App ID</th><th>Name</th><th>Dept</th><th>GPA</th><th>Exam</th><th>Score</th><th>Action</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Teachers Directory -->
+    <section class="card">
+      <h2>Teachers & Department Contacts</h2>
+      <input id="teacherSearch" placeholder="Search teacher or department..." />
+      <div id="teachers" class="teachers-grid"></div>
+    </section>
+  </main>
+
+  <!-- Dashboard modal -->
+  <div id="dashboardModal" class="modal" aria-hidden="true">
+    <div class="modal-inner">
+      <button class="modal-close" id="closeDashboard">&times;</button>
+      <h3>My Applications & Status</h3>
+      <div id="appsList"></div>
+      <hr/>
+      <div id="statusTimeline" class="timeline"></div>
+      <div class="modal-actions" style="margin-top:12px;">
+        <button id="downloadReceipt" class="btn">Download Receipt / Print</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toasts" class="toasts"></div>
+
+  <script src="js/online.js"></script>
+</body>
+</html>

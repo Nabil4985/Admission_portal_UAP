@@ -1,0 +1,73 @@
+:root{
+  --primary:#0b63b3;
+  --accent:#0077d6;
+  --card:#fff;
+  --muted:#f6f9fd;
+  --radius:10px;
+}
+*{box-sizing:border-box}
+body{font-family:"Segoe UI",Roboto,Arial,sans-serif;margin:0;background:var(--muted);color:#123}
+.online-header{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:linear-gradient(90deg,var(--primary),var(--accent));color:#fff;position:sticky;top:0;z-index:40}
+.online-header img{height:55px;margin-right:12px;border-radius:6px;background:#569be9;padding:3px}
+.btn{padding:8px 12px;border-radius:8px;border:0;cursor:pointer;background:#eee}
+.btn.primary{background:var(--primary);color:#fff}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.2);color:#fff}
+
+.container{max-width:1100px;margin:20px auto;padding:12px}
+.card{background:var(--card);padding:16px;border-radius:var(--radius);box-shadow:0 8px 30px rgba(17,40,80,0.04);margin-bottom:16px}
+
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+label input, label textarea, select, input{width:100%;padding:8px;border:1px solid #ddd;border-radius:8px}
+textarea{min-height:70px;resize:vertical}
+.form-actions{margin-top:12px;display:flex;gap:8px}
+.uploads{display:flex;gap:12px;flex-wrap:wrap}
+.upload-card{flex:1;min-width:220px}
+.drop{padding:14px;border:2px dashed #e1e7f4;border-radius:8px;text-align:center;cursor:pointer;position:relative;background:linear-gradient(180deg,#fff,#fbfdff)}
+.drop input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.drop.drag{border-color:var(--primary);background:#f0f8ff}
+.preview-row{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.preview-row img, .preview-row .file-box{height:72px;border-radius:6px;border:1px solid #e8eefb;padding:6px;background:#fff;object-fit:cover}
+.progress{height:8px;background:#f1f5fb;border-radius:6px;margin-top:8px;overflow:hidden}
+.progress > div{height:100%;width:0%;background:linear-gradient(90deg,var(--primary),#00aaff);transition:width .2s}
+
+.fee-box{margin-left:12px;padding:10px;border-radius:8px;background:#f7fbff;border:1px solid rgba(11,99,179,0.08)}
+.fee-box div:first-child{font-size:13px;color:#666}
+.fee-box #appFee{font-weight:700;font-size:20px;margin-top:6px}
+
+.dept-list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
+.dept-item{padding:10px;border-radius:8px;background:#fff;border:1px solid #eef4fb}
+.dept-item h4{margin:0 0 6px 0}
+.dept-item .seats{font-weight:700;color:var(--primary)}
+
+.table-wrap{overflow:auto;margin-top:12px}
+table{width:100%;border-collapse:collapse}
+th,td{padding:8px;border-bottom:1px solid #eee;text-align:left}
+th{background:#fafcff}
+
+.teachers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.teacher-card{padding:12px;border-radius:8px;background:#fff;border:1px solid #eef4fb}
+.teacher-card h4{margin:0 0 6px 0}
+.teacher-card p{margin:4px 0;font-size:13px;color:#444}
+
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.45);z-index:80;padding:20px}
+.modal[aria-hidden="false"]{display:flex}
+.modal-inner{background:#8decf3;padding:14px;border-radius:10px;max-width:700px;width:100%;position:relative}
+.modal-close{position:absolute;right:10px;top:6px;border:0;background:transparent;font-size:22px;cursor:pointer}
+
+.timeline{display:flex;flex-direction:column;gap:6px;margin-top:12px}
+.timeline .step{padding:8px;border-radius:8px;border:1px solid #eef4fb;background:#fafcff}
+.timeline .step.active{border-color:var(--primary);box-shadow:0 6px 20px rgba(11,99,179,0.06);background:linear-gradient(90deg,#f7fbff,#fff)}
+
+.toasts{position:fixed;right:12px;bottom:12px;display:flex;flex-direction:column;gap:8px;z-index:120}
+.toast{padding:10px 12px;border-radius:8px;color:#fff;background:rgba(0,0,0,0.7);opacity:0.95}
+
+@media (max-width:900px){
+  .grid{grid-template-columns:1fr}
+  .teachers-grid{grid-template-columns:repeat(2,1fr)}
+  .dept-list{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:560px){
+  .teachers-grid{grid-template-columns:1fr}
+  .dept-list{grid-template-columns:1fr}
+}

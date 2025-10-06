@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UAP Admission Portal — Home</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- LOADING BAR (used when navigating to admission page) -->
+  <div id="nav-loader" class="nav-loader" aria-hidden="true">
+    <div class="nav-loader-bar"></div>
+  </div>
+
+  <!-- Top header -->
+  <header class="top-header">
+    <div class="logo">
+      <img src="https://uap-bd.edu/img/logo.png" alt="UAP Logo" />
+      <div class="title-wrap" alt="UAP title">
+        <h1><strong>University of Asia Pacific</strong></h1>
+        <small>Admission Portal</small>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Right-side vertical nav (on desktop) -->
+  <nav class="side-nav" role="navigation" aria-label="Main menu">
+    <ul>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="admission.html" class="to-admission">Admission</a></li>
+      <li><a href="#academic">Academic</a></li>
+      <li><a href="#clubs">Clubs</a></li>
+      <li><a href="#backlog-section">Backlogs</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+        <li><a href="admission_online.html" class="to-online">Apply Online</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main content -->
+  <main>
+    <section id="home" class="section hero">
+      <h2>Welcome to the UAP Admission Portal</h2>
+      <p>Find admission rules, department fees, previous year questions and more.</p>
+    </section>
+
+    <section id="academic" class="section">
+      <div class="section-header">
+        <h2>Undergraduate Dept. Wise Credits & Fees</h2>
+        <div class="search-wrap">
+          <input id="deptSearch" placeholder="Search department..." />
+        </div>
+      </div>
+
+      <div class="dept-table">
+        <table id="deptTable" aria-describedby="dept caption">
+          <caption id="dept-caption">Department credits and per-credit fee (BDT)</caption>
+          <thead>
+            <tr>
+              <th>Department</th>
+              <th>Total Credits</th>
+              <th>Per-Credit Fee (BDT)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>CSE</td><td>160</td><td>6000</td></tr>
+            <tr><td>EEE</td><td>150</td><td>5800</td></tr>
+            <tr><td>Architecture</td><td>200</td><td>5500</td></tr>
+            <tr><td>Civil</td><td>170</td><td>5200</td></tr>
+            <tr><td>Textile</td><td>162</td><td>4900</td></tr>
+            <tr><td>BBA</td><td>140</td><td>4200</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="academic" class="section">
+      <div class="section-header">
+        <h2>Post Graduate Dept. Wise Credits & Fees</h2>
+        <div class="search-wrap">
+          <input id="deptSearch" placeholder="Search department..." />
+        </div>
+      </div>
+
+      <div class="dept-table">
+        <table id="deptTable" aria-describedby="dept caption">
+          <caption id="dept-caption">Department credits and per-credit fee (BDT)</caption>
+          <thead>
+            <tr>
+              <th>Department</th>
+              <th>Total Credits</th>
+              <th>Per-Credit Fee (BDT)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>CSE</td><td>160</td><td>6000</td></tr>
+            <tr><td>EEE</td><td>150</td><td>5800</td></tr>
+            <tr><td>Architecture</td><td>200</td><td>5500</td></tr>
+            <tr><td>Civil</td><td>170</td><td>5200</td></tr>
+            <tr><td>Textile</td><td>162</td><td>4900</td></tr>
+            <tr><td>BBA</td><td>140</td><td>4200</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+
+    <section id="pyqs" class="section">
+      <h2>Previous Year Questions</h2>
+      <p>Download compiled previous-year questions (department-wise PDFs).</p>
+      <div class="pyqs-row">
+        <a class="btn download" href="assets/pdf/pyqs.pdf" download>📥 Download PYQs (sample)</a>
+        <button class="btn" id="open-pyqs-list">View List</button>
+      </div>
+    </section>
+
+    <section id="clubs" class="section">
+      <h2>Clubs & Activities</h2>
+      <p>Join tech, debate, cultural and sports clubs to enrich campus life.</p>
+      <ul class="clubs-list">
+        <li>Programming Club</li>
+        <li>Debating Society</li>
+        <li>Cultural Club</li>
+        <li>Robotics Club</li>
+      </ul>
+    </section>
+
+    <section id="backlog-section" class="section">
+      <h2>Backlog Process</h2>
+      <p>Quick overview — click below for full instructions and form.</p>
+      <button class="btn" id="openBacklog">Open Backlog Info</button>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact Us</h2>
+      <p>Email: <a href="mailto:info@uap-bd.edu">info@uap-bd.edu</a></p>
+      <p>Phone: +8802-58157091</p>
+    </section>
+  </main>
+
+  <!-- BACKLOG MODLE -->
+  <div id="backlogModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="backlogTitle">
+    <div class="modal-inner">
+      <button class="modal-close" id="closeBacklog" aria-label="Close">&times;</button>
+      <h3 id="backlogTitle">Backlog Process — Steps</h3>
+      <ol>
+        <li>Contact your department office and get the backlog form.</li>
+        <li>Submit form before the deadline with required documents.</li>
+        <li>Clear backlog fees at the finance office.</li>
+        <li>Register for re-appearance exam and follow the exam schedule.</li>
+      </ol>
+      <p><strong>Note:</strong> For official forms visit department office.</p>
+    </div>
+  </div>
+
+ 
+  <div id="pyqsList" class="modal" aria-hidden="true">
+    <div class="modal-inner">
+      <button class="modal-close" id="closePyqsList" aria-label="Close">&times;</button>
+      <h3>Previous Year Questions — list</h3>
+      <ul>
+        <li><a href="assets/pdf/pyqs.pdf" download>All Departments (sample PDF)</a></li>
+        <li><em>Place department-wise PDFs in assets/pdf/</em></li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
